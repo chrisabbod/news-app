@@ -5,6 +5,9 @@ public class News {
     private String mAuthorFirstName, mAuthorMiddleName, mAuthorLastName;
     private String mDate;
 
+    /** Website URL with Guardian News Data */
+    private String mUrl;
+
     public News(String mTitle, String mSection) {
         this.mTitle = mTitle;
         this.mSection = mSection;
