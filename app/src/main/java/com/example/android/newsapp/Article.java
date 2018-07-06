@@ -1,14 +1,14 @@
 package com.example.android.newsapp;
 
-public class News {
+public class Article {
     private String mTitle, mSection;
     private String mAuthorFirstName, mAuthorMiddleName, mAuthorLastName;
     private String mDate;
 
-    /** Website URL with Guardian News Data */
+    /** Website URL with Guardian Article Data */
     private String mUrl;
 
-    public News(String mTitle, String mSection) {
+    public Article(String mTitle, String mSection) {
         this.mTitle = mTitle;
         this.mSection = mSection;
     }

@@ -1,7 +1,6 @@
 package com.example.android.newsapp;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class NewsAdapter extends ArrayAdapter<News> {
+public class ArticleAdapter extends ArrayAdapter<Article> {
 
-    public NewsAdapter(Context context, List<News> news){
-        super(context, 0, news);
+    public ArticleAdapter(Context context, List<Article> articles){
+        super(context, 0, articles);
     }
 
     @Override
@@ -26,7 +25,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
 
         //Find the article at the given position in the list of news items
-        News currentArticle = getItem(position);
+        Article currentArticle = getItem(position);
 
         TextView titleView = (TextView)listItemView.findViewById(R.id.title);
         TextView sectionView = (TextView)listItemView.findViewById(R.id.section);
