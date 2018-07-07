@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +26,25 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private ArticleAdapter mAdapter;
 
+    /** TextView that is displayed when the list is empty*/
+    private TextView mEmptyStateTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //Find a reference to the ListView in layout
-        ListView newsListView = (ListView)findViewById(R.id.list);
+        ListView articleListView = (ListView)findViewById(R.id.list);
 
         //Create a new adapter that takes an empty list of news articles as input
         mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
 
+        mEmptyStateTextView = (TextView)findViewById(R.id.empty_view);
+        articleListView.setEmptyView(mEmptyStateTextView);
+
         //Set the adapter on the ListView so the list can be populated in the UI
-        newsListView.setAdapter(mAdapter);
+        articleListView.setAdapter(mAdapter);
 
         //Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -54,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
             loaderManager.initLoader(ARTICLE_LOADER_ID, null, this);
+        }else{
+            //Display Error
+
+            //Update empty state with no connection error message
+            mEmptyStateTextView.setText(R.string.no_internet_connection);
         }
     }
 
