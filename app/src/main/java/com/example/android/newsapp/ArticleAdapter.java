@@ -35,7 +35,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         titleView.setText(currentArticle.getTitle());
         sectionView.setText(currentArticle.getSection());
         authorView.setText("John Doe");
-        dateView.setText(currentArticle.getDate());
+        dateView.setText(currentArticle.parseDate(currentArticle.getDate()));
 
         return listItemView;
     }

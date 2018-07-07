@@ -63,4 +63,18 @@ public class Article {
     public void setDate(String mDate) {
         this.mDate = mDate;
     }
+
+    //Extracts author name from given string
+    public String parseAuthorName(String string){
+        String newString = string.substring(string.indexOf("|") + 1, string.length());
+
+        return newString;
+    }
+
+    //Extracts date from given string
+    public String parseDate(String string){
+        String newString = string.substring(0, string.indexOf("T"));
+
+        return newString;
+    }
 }
