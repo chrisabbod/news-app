@@ -127,4 +127,48 @@ public final class QueryUtils {
         return output.toString();
     }
 
+    /**
+     * Make an HTTP request to te given URL and return a String as the response.
+     */
+    private static String makeHttpRequest(URL url) throws IOException{
+        String jsonResponse = "";
+
+        //If the URL is null, then return early
+        if(url == null){
+            return jsonResponse;
+        }
+
+        HttpURLConnection urlConnection = null;
+        InputStream inputStream = null;
+        try{
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(10000 /* milliseconds */);
+            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+
+            //If the request was successful (response code 200),
+            //then read the input stream and parse the response.
+            if(urlConnection.getResponseCode() == 200){
+                inputStream = urlConnection.getInputStream();
+                jsonResponse = readFromStream(inputStream);
+            }else{
+                Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
+            }
+        }catch (IOException e){
+            Log.e(LOG_TAG, "Problem retrieving the article JSON results.", e);
+        }finally{
+            if(urlConnection != null){
+                urlConnection.disconnect();
+            }
+            if(inputStream != null){
+                // Closing the input stream could throw an IOException, which is why
+                // the makeHttpRequest(URL url) method signature specifies than an IOException
+                // could be thrown.
+                inputStream.close();
+            }
+        }
+        return jsonResponse;
+    }
+
 }
