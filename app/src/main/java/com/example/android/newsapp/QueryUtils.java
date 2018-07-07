@@ -8,7 +8,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,30 +51,29 @@ public final class QueryUtils {
             //Create a JSONObject from the JSON response string
             JSONObject baseJsonResponse = new JSONObject(articleJSON);
 
+            //Create a JSONObject associated with the key called "response"
+            JSONObject responseObject = baseJsonResponse.getJSONObject("response");
+
             //Extract the JSONArray associated with the key called "results",
             //which represents a list of results (or articles articles).
-            JSONArray articleArray = baseJsonResponse.getJSONArray("response");
+            JSONArray articleArray = responseObject.getJSONArray("results");
 
-            //For each articles article in the newsArray, create a articles object
+            //For each  article in the articlesArray, create an article object
             for (int i = 0; i < articleArray.length(); i++){
                 //Get a single article at position i within the list of articles articles
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
-                //For a given article, extract the JSONObject associated with the key called
-                //"results", which represents a list of all properties for that article
-                JSONObject results = currentArticle.getJSONObject("results");
-
                 //Extract the value for the key called "webTitle"
-                String title = results.getString("webTitle");
+                String title = currentArticle.getString("webTitle");
 
                 //Extract the value for the key called "sectionName"
-                String section = results.getString("sectionName");
+                String section = currentArticle.getString("sectionName");
 
                 //Extract the value for the key called "webPublicationDate"
-                long date = results.getLong("webPublicationDate");
+                String date = currentArticle.getString("webPublicationDate");
 
                 //Extract the value for the key called "webUrl"
-                String url = results.getString("webUrl");
+                String url = currentArticle.getString("webUrl");
 
                 //TODO: Add Author
 
@@ -85,6 +83,8 @@ public final class QueryUtils {
 
                 //Add the new Article to the list of articles
                 articles.add(article);
+
+                Log.e("Articles", currentArticle.toString());
             }
         }catch(JSONException e){
             //If an error is thrown when executing any of the above statements in the "try" block,
