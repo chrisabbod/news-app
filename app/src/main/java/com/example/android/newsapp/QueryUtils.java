@@ -171,4 +171,25 @@ public final class QueryUtils {
         return jsonResponse;
     }
 
+    /**
+     * Query The Guardian dataset and return a list of Article objects
+     */
+    public static List<Article>fetchArticleData(String requestURL){
+        //Create URL Object
+        URL url = createURL(requestURL);
+
+        //Perform HTTP request to the URL and receive a JSON response back
+        String jsonResponse = null;
+        try{
+            jsonResponse = makeHttpRequest(url);
+        }catch (IOException e){
+            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
+        }
+
+        //Extract relevant fields from the JSON response and create a list of articles
+        List<Article> articles = extractFeaturesFromJson(jsonResponse);
+
+        //Return the list of articles
+        return articles;
+    }
 }
