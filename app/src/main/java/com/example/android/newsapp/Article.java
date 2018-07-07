@@ -4,9 +4,10 @@ public class Article {
     private String mTitle, mSection;
     private String mAuthorFirstName, mAuthorMiddleName, mAuthorLastName;
     private String mDate;
+    private String mUrl;
 
     /** Website URL with Guardian Article Data */
-    private String mUrl;
+    private String mApiUrl;
 
     public Article(String mTitle, String mSection) {
         this.mTitle = mTitle;
