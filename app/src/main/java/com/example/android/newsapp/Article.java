@@ -2,17 +2,23 @@ package com.example.android.newsapp;
 
 public class Article {
     private String mTitle, mSection;
-    private String mAuthorFirstName, mAuthorMiddleName, mAuthorLastName;
+    private String mAuthorName;
     private String mDate;
     private String mUrl;
-
-    /** Website URL with Guardian Article Data */
-    private String mApiUrl;
 
     public Article(String mTitle, String mSection, String mDate, String mUrl) {
         this.mTitle = mTitle;
         this.mSection = mSection;
         this.mDate = mDate;
+        this.mUrl = mUrl;
+    }
+
+    //Overloaded Constructor with Author Name Parameter
+    public Article(String mTitle, String mSection, String mDate, String mAuthorName, String mUrl) {
+        this.mTitle = mTitle;
+        this.mSection = mSection;
+        this.mDate = mDate;
+        this.mAuthorName = mAuthorName;
         this.mUrl = mUrl;
     }
 
@@ -32,28 +38,12 @@ public class Article {
         this.mSection = mSection;
     }
 
-    public String getAuthorFirstName() {
-        return mAuthorFirstName;
+    public String getAuthorName() {
+        return mAuthorName;
     }
 
-    public void setAuthorFirstName(String mAuthorFirstName) {
-        this.mAuthorFirstName = mAuthorFirstName;
-    }
-
-    public String getAuthorMiddleName() {
-        return mAuthorMiddleName;
-    }
-
-    public void setAuthorMiddleName(String mAuthorMiddleName) {
-        this.mAuthorMiddleName = mAuthorMiddleName;
-    }
-
-    public String getAuthorLastName() {
-        return mAuthorLastName;
-    }
-
-    public void setAuthorLastName(String mAuthorLastName) {
-        this.mAuthorLastName = mAuthorLastName;
+    public void setAuthorName(String mAuthorName) {
+        this.mAuthorName = mAuthorName;
     }
 
     public String getDate() {
@@ -65,10 +55,10 @@ public class Article {
     }
 
     //Extracts author name from given string
-    public String parseAuthorName(String string){
+    public void parseAuthorName(String string){
         String newString = string.substring(string.indexOf("|") + 1, string.length());
 
-        return newString;
+        setAuthorName(newString);
     }
 
     //Extracts date from given string

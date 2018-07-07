@@ -75,8 +75,6 @@ public final class QueryUtils {
                 //Extract the value for the key called "webUrl"
                 String url = currentArticle.getString("webUrl");
 
-                //TODO: Add Author
-
                 //Create a new Article object with the title, section, date, and author
                 //then add to the JSON response
                 Article article = new Article(title, section, date, url);

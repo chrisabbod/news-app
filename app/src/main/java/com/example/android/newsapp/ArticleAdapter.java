@@ -34,7 +34,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         titleView.setText(currentArticle.getTitle());
         sectionView.setText(currentArticle.getSection());
-        authorView.setText("John Doe");
+
+        if(currentArticle.getTitle().contains("|")){
+            currentArticle.parseAuthorName(currentArticle.getTitle());
+            authorView.setText(currentArticle.getAuthorName());
+        }
+
         dateView.setText(currentArticle.parseDate(currentArticle.getDate()));
 
         return listItemView;
