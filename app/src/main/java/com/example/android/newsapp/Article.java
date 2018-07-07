@@ -9,9 +9,10 @@ public class Article {
     /** Website URL with Guardian Article Data */
     private String mApiUrl;
 
-    public Article(String mTitle, String mSection) {
+    public Article(String mTitle, String mSection, String mDate) {
         this.mTitle = mTitle;
         this.mSection = mSection;
+        this.mDate = mDate;
     }
 
     public String getTitle() {
