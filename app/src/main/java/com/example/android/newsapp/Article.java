@@ -13,15 +13,6 @@ public class Article {
         this.mUrl = mUrl;
     }
 
-    //Overloaded Constructor with Author Name Parameter
-    public Article(String mTitle, String mSection, String mDate, String mAuthorName, String mUrl) {
-        this.mTitle = mTitle;
-        this.mSection = mSection;
-        this.mDate = mDate;
-        this.mAuthorName = mAuthorName;
-        this.mUrl = mUrl;
-    }
-
     public String getTitle() {
         return mTitle;
     }
@@ -52,6 +43,14 @@ public class Article {
 
     public void setDate(String mDate) {
         this.mDate = mDate;
+    }
+
+    public String getUrl() {
+        return mUrl;
+    }
+
+    public void setUrl(String mUrl) {
+        this.mUrl = mUrl;
     }
 
     //Extracts author name from given string

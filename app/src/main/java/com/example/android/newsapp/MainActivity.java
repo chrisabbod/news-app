@@ -2,12 +2,15 @@ package com.example.android.newsapp;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -46,6 +49,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         //Set the adapter on the ListView so the list can be populated in the UI
         articleListView.setAdapter(mAdapter);
+
+        //Set onClickListener
+        articleListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Article currentArticle = mAdapter.getItem(i);
+
+                //Convert the String URL into a URI object to pass into the Intent Constructor
+                Uri articleUri = Uri.parse(currentArticle.getUrl());
+
+                //Create a new intent to view the article Uri
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, articleUri);
+                startActivity(websiteIntent);
+            }
+        });
 
         //Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
