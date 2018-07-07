@@ -7,8 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.android.newsapp.MainActivity.LOG_TAG;
 
 /**
  * Helper methods for requesting/receiving data from The Guardian
@@ -84,6 +88,19 @@ public final class QueryUtils {
 
         //Return the list of articles articles
         return articles;
+    }
+
+    /**
+     * Make an HTTP request to the given URL and return a String response
+     */
+    private static URL createURL(String stringURL){
+        URL url = null;
+        try{
+            url = new URL(stringURL);
+        }catch(MalformedURLException e){
+            Log.e(LOG_TAG, "Problem building the URL ", e);
+        }
+        return url;
     }
 
 

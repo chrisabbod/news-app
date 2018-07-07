@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private static final String guardian_request_url = "https://content.guardianapis.com/politics?tag=-blog&api-key=36f66e45-37ec-4793-9f1e-452f9718c623";
+    public static final String LOG_TAG = MainActivity.class.getName();
 
     private ArticleAdapter mAdapter;
 
