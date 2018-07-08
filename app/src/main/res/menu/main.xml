@@ -1,7 +1,8 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.quakereport.EarthquakeActivity">
-    
+    tools:context="com.example.android.newsapp.SettingsActivity">
+
     <item
         android:id="@+id/action_settings"
         android:title="@string/settings_menu_item" />
