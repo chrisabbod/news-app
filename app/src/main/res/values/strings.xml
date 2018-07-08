@@ -2,5 +2,5 @@
     <string name="app_name">News App</string>
 
     <string name="no_internet_connection">No Internet Connection</string>
-    <string name="no_articles">No Articles Found</string>
+    <string name="no_articles">No Articles Found. Please check your internet connection.</string>
 </resources>
