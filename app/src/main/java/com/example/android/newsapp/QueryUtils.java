@@ -72,29 +72,38 @@ public final class QueryUtils {
                 //Extract the value for the key called "webPublicationDate"
                 String date = currentArticle.getString("webPublicationDate");
 
+                //Extract the value for the key called "webUrl"
+                String url = currentArticle.getString("webUrl");
+
                 //Extract the JSONArray associated with the key called "tags",
                 //which the contributor names can be pulled from
                 JSONArray tagsArray = currentArticle.getJSONArray("tags");
 
-                ArrayList<String> contributors = new ArrayList<String>();
+                if(tagsArray.length() != 0){
+                    ArrayList<String> contributors = new ArrayList<String>();
 
-                for(int j = 0; j < tagsArray.length(); j++){
-                    //Get a single Tag at position j within the article results
-                    JSONObject currentTag = tagsArray.getJSONObject(j);
+                    for(int j = 0; j < tagsArray.length(); j++){
+                        //Get a single Tag at position j within the article results
+                        JSONObject currentTag = tagsArray.getJSONObject(j);
 
-                    //Extract the value for the key called "webTitle"
-                    contributors.add(currentTag.getString("webTitle"));
+                        //Extract the value for the key called "webTitle"
+                        contributors.add(currentTag.getString("webTitle"));
+                    }
+
+                    //Create a new Article object with the title, section, date, and author
+                    //then add to the JSON response
+                    Article article = new Article(title, section, contributors, date, url);
+
+                    //Add the new Article to the list of articles
+                    articles.add(article);
+                }else{
+                    //Create a new Article object with the title, section, date, and author
+                    //then add to the JSON response
+                    Article article = new Article(title, section, date, url);
+
+                    //Add the new Article to the list of articles
+                    articles.add(article);
                 }
-
-                //Extract the value for the key called "webUrl"
-                String url = currentArticle.getString("webUrl");
-
-                //Create a new Article object with the title, section, date, and author
-                //then add to the JSON response
-                Article article = new Article(title, section, contributors, date, url);
-
-                //Add the new Article to the list of articles
-                articles.add(article);
 
                 Log.e("Articles", currentArticle.toString());
             }

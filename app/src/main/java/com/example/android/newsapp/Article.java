@@ -8,6 +8,15 @@ public class Article {
     private String mDate;
     private String mUrl;
 
+    public Article(String mTitle, String mSection, String mDate, String mUrl) {
+        this.mTitle = mTitle;
+        this.mSection = mSection;
+        this.mContributors = mContributors;
+        this.mDate = mDate;
+        this.mUrl = mUrl;
+    }
+
+    //Overloaded constructor
     public Article(String mTitle, String mSection, ArrayList<String> mContributors, String mDate, String mUrl) {
         this.mTitle = mTitle;
         this.mSection = mSection;

@@ -39,10 +39,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         ArrayList<String> contributorList = currentArticle.getContributors();
 
-        contributorOneView.setText(contributorList.get(0));
+        if(contributorList.size() != 0){
+            contributorOneView.setText(contributorList.get(0));
 
-        if(contributorList.size() > 1){
-            contributorTwoView.setText(contributorList.get(1));
+            if(contributorList.size() > 1){
+                contributorTwoView.setText(contributorList.get(1));
+            }
         }
 
         dateView.setText(currentArticle.parseDate(currentArticle.getDate()));
