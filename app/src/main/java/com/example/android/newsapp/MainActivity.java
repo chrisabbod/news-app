@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
+        //Set empty state text to display "No articles found."
+        mEmptyStateTextView.setText(R.string.no_articles);
         //Clear the adapter of previous article data
         mAdapter.clear();
 
