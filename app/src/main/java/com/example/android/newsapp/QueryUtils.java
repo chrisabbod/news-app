@@ -91,7 +91,7 @@ public final class QueryUtils {
 
                 //Create a new Article object with the title, section, date, and author
                 //then add to the JSON response
-                Article article = new Article(title, section, date, url);
+                Article article = new Article(title, section, contributors, date, url);
 
                 //Add the new Article to the list of articles
                 articles.add(article);

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
@@ -29,15 +30,19 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         TextView titleView = (TextView)listItemView.findViewById(R.id.title);
         TextView sectionView = (TextView)listItemView.findViewById(R.id.section);
-        TextView authorView = (TextView)listItemView.findViewById(R.id.author);
+        TextView contributorOneView = (TextView)listItemView.findViewById(R.id.contributor_one);
+        TextView contributorTwoView = (TextView)listItemView.findViewById(R.id.contributor_two);
         TextView dateView = (TextView)listItemView.findViewById(R.id.date);
 
         titleView.setText(currentArticle.getTitle());
         sectionView.setText(currentArticle.getSection());
 
-        if(currentArticle.getTitle().contains("|")){
-            currentArticle.parseAuthorName(currentArticle.getTitle());
-            authorView.setText(currentArticle.getAuthorName());
+        ArrayList<String> contributorList = currentArticle.getContributors();
+
+        contributorOneView.setText(contributorList.get(0));
+
+        if(contributorList.size() > 1){
+            contributorTwoView.setText(contributorList.get(1));
         }
 
         dateView.setText(currentArticle.parseDate(currentArticle.getDate()));

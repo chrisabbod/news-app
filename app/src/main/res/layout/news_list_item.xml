@@ -41,13 +41,22 @@
             tools:text="July 1, 2018" />
 
         <TextView
-            android:id="@+id/author"
+            android:id="@+id/contributor_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            tools:text="John Doe" />
+
+        <TextView
+            android:id="@+id/contributor_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:paddingEnd="8dp"
             android:paddingStart="0dp"
-            tools:text="John Doe" />
+            tools:text="Jane Doe" />
 
     </LinearLayout>
 

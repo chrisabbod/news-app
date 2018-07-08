@@ -1,24 +1,18 @@
 package com.example.android.newsapp;
 
+import java.util.ArrayList;
+
 public class Article {
     private String mTitle, mSection;
-    private String mAuthorName;
+    private ArrayList<String> mContributors = new ArrayList<String>();
     private String mDate;
     private String mUrl;
 
-    public Article(String mTitle, String mSection, String mDate, String mUrl) {
+    public Article(String mTitle, String mSection, ArrayList<String> mContributors, String mDate, String mUrl) {
         this.mTitle = mTitle;
         this.mSection = mSection;
+        this.mContributors = mContributors;
         this.mDate = mDate;
-        this.mUrl = mUrl;
-    }
-
-    //Overloaded Constructor that includes Author Name
-    public Article(String mTitle, String mSection, String mDate, String mAuthorName, String mUrl) {
-        this.mTitle = mTitle;
-        this.mSection = mSection;
-        this.mDate = mDate;
-        this.mAuthorName = mAuthorName;
         this.mUrl = mUrl;
     }
 
@@ -38,12 +32,12 @@ public class Article {
         this.mSection = mSection;
     }
 
-    public String getAuthorName() {
-        return mAuthorName;
+    public ArrayList<String> getContributors() {
+        return mContributors;
     }
 
-    public void setAuthorName(String mAuthorName) {
-        this.mAuthorName = mAuthorName;
+    public void setContributors(ArrayList<String> mContributors) {
+        this.mContributors = mContributors;
     }
 
     public String getDate() {
@@ -60,13 +54,6 @@ public class Article {
 
     public void setUrl(String mUrl) {
         this.mUrl = mUrl;
-    }
-
-    //Extracts author name from given string
-    public void parseAuthorName(String string){
-        String newString = string.substring(string.indexOf("|") + 1, string.length());
-
-        setAuthorName(newString);
     }
 
     //Extracts date from given string
