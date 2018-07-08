@@ -60,7 +60,7 @@ public final class QueryUtils {
 
             //For each  article in the articlesArray, create an article object
             for (int i = 0; i < articleArray.length(); i++){
-                //Get a single article at position i within the list of articles articles
+                //Get a single article at position i within the list of articles
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
                 //Extract the value for the key called "webTitle"
@@ -71,6 +71,20 @@ public final class QueryUtils {
 
                 //Extract the value for the key called "webPublicationDate"
                 String date = currentArticle.getString("webPublicationDate");
+
+                //Extract the JSONArray associated with the key called "tags",
+                //which the contributor names can be pulled from
+                JSONArray tagsArray = currentArticle.getJSONArray("tags");
+
+                ArrayList<String> contributors = new ArrayList<String>();
+
+                for(int j = 0; j < tagsArray.length(); j++){
+                    //Get a single Tag at position j within the article results
+                    JSONObject currentTag = tagsArray.getJSONObject(j);
+
+                    //Extract the value for the key called "webTitle"
+                    contributors.add(currentTag.getString("webTitle"));
+                }
 
                 //Extract the value for the key called "webUrl"
                 String url = currentArticle.getString("webUrl");

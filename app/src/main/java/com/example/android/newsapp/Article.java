@@ -13,6 +13,15 @@ public class Article {
         this.mUrl = mUrl;
     }
 
+    //Overloaded Constructor that includes Author Name
+    public Article(String mTitle, String mSection, String mDate, String mAuthorName, String mUrl) {
+        this.mTitle = mTitle;
+        this.mSection = mSection;
+        this.mDate = mDate;
+        this.mAuthorName = mAuthorName;
+        this.mUrl = mUrl;
+    }
+
     public String getTitle() {
         return mTitle;
     }
