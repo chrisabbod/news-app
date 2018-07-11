@@ -28,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
             bindPreferenceSummaryToValue(topic);
         }
 
+        // The code in this method takes care of updating the displayed preference summary after it has been changed
         @Override
         public boolean onPreferenceChange(Preference preference, Object value){
             String stringValue = value.toString();

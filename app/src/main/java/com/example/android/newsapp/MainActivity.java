@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //Find a reference to the ListView in layout
         ListView articleListView = (ListView)findViewById(R.id.list);
 
-        //Create a new adapter that takes an empty list of news articles as input
-        mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
-
         mEmptyStateTextView = (TextView)findViewById(R.id.empty_view);
         articleListView.setEmptyView(mEmptyStateTextView);
+
+        //Create a new adapter that takes an empty list of news articles as input
+        mAdapter = new ArticleAdapter(this, new ArrayList<Article>());
 
         //Set the adapter on the ListView so the list can be populated in the UI
         articleListView.setAdapter(mAdapter);
@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         //Set empty state text to display "No articles found."
         mEmptyStateTextView.setText(R.string.no_articles);
+
         //Clear the adapter of previous article data
         mAdapter.clear();
 

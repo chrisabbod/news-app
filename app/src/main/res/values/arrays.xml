@@ -4,7 +4,6 @@
         <item>@string/settings_topic_politics_label</item>
         <item>@string/settings_topic_sports_label</item>
         <item>@string/settings_topic_science_label</item>
-        <item>@string/settings_topic_history_label</item>
         <item>@string/settings_topic_technology_label</item>
         <item>@string/settings_topic_culture_label</item>
     </string-array>
@@ -13,7 +12,6 @@
         <item>@string/settings_topic_politics_value</item>
         <item>@string/settings_topic_sports_value</item>
         <item>@string/settings_topic_science_value</item>
-        <item>@string/settings_topic_history_value</item>
         <item>@string/settings_topic_technology_value</item>
         <item>@string/settings_topic_culture_value</item>
     </string-array>

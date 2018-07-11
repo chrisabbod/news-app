@@ -18,7 +18,7 @@
 
     <!-- String for order-by sports [CHAR LIMIT 30] -->
     <string name="settings_topic_sports_label">Sports</string>
-    <string name="settings_topic_sports_value" translatable="false">sports</string>
+    <string name="settings_topic_sports_value" translatable="false">sport</string>
 
     <!-- String for order-by science [CHAR LIMIT 30] -->
     <string name="settings_topic_science_label">Science</string>
@@ -27,10 +27,6 @@
     <!-- String for order-by technology [CHAR LIMIT 30] -->
     <string name="settings_topic_technology_label">Technology</string>
     <string name="settings_topic_technology_value" translatable="false">technology</string>
-
-    <!-- String for order-by history [CHAR LIMIT 30] -->
-    <string name="settings_topic_history_label">History</string>
-    <string name="settings_topic_history_value" translatable="false">history</string>
 
     <!-- String for order-by culture [CHAR LIMIT 30] -->
     <string name="settings_topic_culture_label">Culture</string>
