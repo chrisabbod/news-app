@@ -122,14 +122,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+        String topic = sharedPrefs.getString(
+                getString(R.string.settings_topic_key),
+                getString(R.string.settings_topic_default)
+        );
+
         //parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
 
         //buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        //TODO: Complete onCreateLoader using section and order-by section=politics&order-by=newest
+
         //Append query parameter and its value.
-        uriBuilder.appendQueryParameter("section", "politics");
+        uriBuilder.appendQueryParameter("section", topic);
         uriBuilder.appendQueryParameter("show-tags", "contributors");
         uriBuilder.appendQueryParameter("api-key", "36f66e45-37ec-4793-9f1e-452f9718c623");
 
